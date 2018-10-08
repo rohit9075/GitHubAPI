@@ -11,24 +11,21 @@ import com.rohit.githubapi.R;
 
 public class LogInActivity extends AppCompatActivity {
 
-    private Button logIn;
     private EditText inputUserName;
-
-    private Intent mIntentLogin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_log_in);
 
-        logIn = (Button) findViewById(R.id.btn_login);
+        Button logIn = (Button) findViewById(R.id.btn_login);
         inputUserName = (EditText) findViewById(R.id.input_username);
 
     }
 
     public void getUser(View view){
 
-        mIntentLogin = new Intent(LogInActivity.this, UserActivity.class);
+        Intent mIntentLogin = new Intent(LogInActivity.this, UserActivity.class);
         mIntentLogin.putExtra("STRING_I_NEED", inputUserName.getText().toString());
         startActivity(mIntentLogin);
     }
