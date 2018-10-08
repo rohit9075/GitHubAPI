@@ -14,7 +14,7 @@ public class LogInActivity extends AppCompatActivity {
     private Button logIn;
     private EditText inputUserName;
 
-    private Intent i;
+    private Intent mIntentLogin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,9 +28,9 @@ public class LogInActivity extends AppCompatActivity {
 
     public void getUser(View view){
 
-        i = new Intent(LogInActivity.this, UserActivity.class);
-        i.putExtra("STRING_I_NEED", inputUserName.getText().toString());
-        startActivity(i);
+        mIntentLogin = new Intent(LogInActivity.this, UserActivity.class);
+        mIntentLogin.putExtra("STRING_I_NEED", inputUserName.getText().toString());
+        startActivity(mIntentLogin);
     }
 
 
