@@ -17,13 +17,12 @@
               android:hint= "@string/username"/>
 
     <Button
-        android:id="@+id/btn_login"
+        android:id="@+id/button_login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:layout_marginBottom="20dp"
         android:padding="15dp"
         android:layout_below="@id/input_username"
-        android:text="@string/login"
-        android:onClick="getUser"/>
+        android:text="@string/login" />
 </RelativeLayout>

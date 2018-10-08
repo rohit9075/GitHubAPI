@@ -1,5 +1,6 @@
 package com.rohit.githubapi.activity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -9,26 +10,32 @@ import android.widget.EditText;
 
 import com.rohit.githubapi.R;
 
-public class LogInActivity extends AppCompatActivity {
+public class LogInActivity extends AppCompatActivity implements View.OnClickListener {
 
     private EditText inputUserName;
+    Button mButtonLogin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_log_in);
 
-        Button logIn = (Button) findViewById(R.id.btn_login);
-        inputUserName = (EditText) findViewById(R.id.input_username);
+        mButtonLogin =  findViewById(R.id.btn_login);
+        mButtonLogin.setOnClickListener(this);
+        inputUserName =  findViewById(R.id.input_username);
 
     }
 
-    public void getUser(View view){
+    @Override
+    public void onClick(View v) {
 
-        Intent mIntentLogin = new Intent(LogInActivity.this, UserActivity.class);
-        mIntentLogin.putExtra("STRING_I_NEED", inputUserName.getText().toString());
-        startActivity(mIntentLogin);
+        if (v.getId()== R.id.button_login){
+
+            Intent mIntentLogin = new Intent(LogInActivity.this, UserActivity.class);
+            mIntentLogin.putExtra("STRING_I_NEED", inputUserName.getText().toString());
+            startActivity(mIntentLogin);
+
+        }
+
     }
-
-
 }
