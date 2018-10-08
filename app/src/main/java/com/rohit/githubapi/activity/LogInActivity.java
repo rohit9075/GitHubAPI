@@ -20,7 +20,7 @@ public class LogInActivity extends AppCompatActivity implements View.OnClickList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_log_in);
 
-        mButtonLogin =  findViewById(R.id.btn_login);
+        mButtonLogin =  findViewById(R.id.button_login);
         mButtonLogin.setOnClickListener(this);
         inputUserName =  findViewById(R.id.input_username);
 
