@@ -27,13 +27,13 @@ import retrofit2.Response;
 
 public class UserActivity extends AppCompatActivity {
 
-    ImageView avatarImg;
-    TextView userNameTV;
-    TextView followersTV;
-    TextView followingTV;
-    TextView logIn;
+    ImageView mImageViewAvtarImage;
+    TextView mTextViewUserName;
+    TextView mTextViewFollowers;
+    TextView mTextViewFollowing;
+    TextView mTextViewLogin;
     TextView email;
-    Button ownedrepos;
+    Button mButtonWonedRepository;
 
     Bundle extras;
     String newString;
@@ -46,13 +46,13 @@ public class UserActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user);
 
-        avatarImg = (ImageView) findViewById(R.id.avatar);
-        userNameTV = (TextView) findViewById(R.id.username);
-        followersTV = (TextView) findViewById(R.id.followers);
-        followingTV = (TextView) findViewById(R.id.following);
-        logIn = (TextView) findViewById(R.id.logIn);
-        email = (TextView) findViewById(R.id.email);
-        ownedrepos = (Button) findViewById(R.id.ownedReposBtn);
+        mImageViewAvtarImage = findViewById(R.id.avatar);
+        mTextViewUserName =  findViewById(R.id.username);
+        mTextViewFollowers = findViewById(R.id.followers);
+        mTextViewFollowing = findViewById(R.id.following);
+        mTextViewLogin =  findViewById(R.id.logIn);
+        email = findViewById(R.id.email);
+        mButtonWonedRepository = findViewById(R.id.ownedReposBtn);
 
         extras = getIntent().getExtras();
         newString = extras.getString("STRING_I_NEED");
@@ -117,19 +117,19 @@ public class UserActivity extends AppCompatActivity {
 
                 }
 
-                avatarImg.setImageBitmap(myImage);
-                avatarImg.getLayoutParams().height=220;
-                avatarImg.getLayoutParams().width=220;
+                mImageViewAvtarImage.setImageBitmap(myImage);
+                mImageViewAvtarImage.getLayoutParams().height=220;
+                mImageViewAvtarImage.getLayoutParams().width=220;
 
                 if(response.body().getName() == null){
-                    userNameTV.setText("No name provided");
+                    mTextViewUserName.setText("No name provided");
                 } else {
-                    userNameTV.setText("Username: " + response.body().getName());
+                    mTextViewUserName.setText("Username: " + response.body().getName());
                 }
 
-                followersTV.setText("Followers: " + response.body().getFollowers());
-                followingTV.setText("Following: " + response.body().getFollowing());
-                logIn.setText("LogIn: " + response.body().getLogin());
+                mTextViewFollowers.setText("Followers: " + response.body().getFollowers());
+                mTextViewFollowing.setText("Following: " + response.body().getFollowing());
+                mTextViewLogin.setText("LogIn: " + response.body().getLogin());
 
                 if(response.body().getEmail() == null){
                     email.setText("No email provided");
