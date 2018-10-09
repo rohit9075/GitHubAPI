@@ -137,8 +137,6 @@ public class UserActivity extends AppCompatActivity {
                     email.setText("Email: " + response.body().getEmail());
                 }
 
-
-
             }
 
             @Override
