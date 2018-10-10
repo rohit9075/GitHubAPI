@@ -1,5 +1,6 @@
 package com.rohit.githubapi.activity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -65,11 +66,23 @@ public class UserActivity extends AppCompatActivity {
                 APIClient.getClient().create(GitHubUserEndPoints.class);
 
         Call<GitHubUser> call = apiService.getUser(newString);
+
+       final ProgressDialog progressDoalog;
+        progressDoalog = new ProgressDialog(UserActivity.this);
+        progressDoalog.setMessage("Its loading....");
+        progressDoalog.setTitle("ProgressDialog bar example");
+        progressDoalog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        progressDoalog.show();
+
+
         call.enqueue(new Callback<GitHubUser>() {
 
             @Override
             public void onResponse(Call<GitHubUser> call, Response<GitHubUser>
                     response) {
+
+                if (progressDoalog.isShowing())
+                    progressDoalog.dismiss();
 
 
                 // getting the image link.
@@ -104,6 +117,8 @@ public class UserActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<GitHubUser> call, Throwable t) {
+                if (progressDoalog.isShowing())
+                    progressDoalog.dismiss();
                 System.out.println("Failed!" + t.toString());
             }
         });
