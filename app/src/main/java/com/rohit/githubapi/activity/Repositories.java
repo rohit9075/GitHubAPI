@@ -36,11 +36,11 @@ public class Repositories extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         receivedUserName = extras.getString("username");
 
-        userNameTV = (TextView) findViewById(R.id.userNameTV);
+        userNameTV = findViewById(R.id.userNameTV);
 
         userNameTV.setText("User: " + receivedUserName);
 
-        mRecyclerView= (RecyclerView) findViewById(R.id.repos_recycler_view);
+        mRecyclerView= findViewById(R.id.repos_recycler_view);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         myAdapter = new ReposAdapter(myDataSource, R.layout.list_item_repo,
                 getApplicationContext());
@@ -61,6 +61,7 @@ public class Repositories extends AppCompatActivity {
             public void onResponse(Call<List<GitHubRepo>> call, Response<List<GitHubRepo>> response) {
 
                 myDataSource.clear();
+                //adding the all data to the ArrayList
                 myDataSource.addAll(response.body());
                 myAdapter.notifyDataSetChanged();
             }
