@@ -72,9 +72,11 @@ public class UserActivity extends AppCompatActivity {
                     response) {
 
 
+                // getting the image link.
                 String imageLink = response.body().getAvatar();
 
 
+                // downloading the image from the link using picasso library.
                 Picasso.get()
                         .load(imageLink)
                         .resize(200, 200)
